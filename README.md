@@ -27,12 +27,12 @@ Diversas aplicações se beneficiam do uso de drones e a obtenção de sua posi�
 
 Cada constelação de satélites transmite informações distintas para descrição da órbita de seus satélites. No nosso modelo, vamos seguir as especificações do GPS e Galileo, que transmitem um conjunto de parâmetros chamados de **elementos orbitais de Kepler**, colocados na Figura  (também recebem o nome de efemérides):
 
-- Excentricidade da órbita [$e$], que sempre vai ser um valor entre $0$ e $1$.
-- Semieixo maior [$a$], metade da distância entre o apogeu e perigeu
-- Argumento do perigeu [$\omega$], define a orientação da elipse no plano orbital
-- Inclinação [$i$], ângulo entre o plano equatorial da terra e o plano orbital
-- Longitude do nó ascendente [$\Omega$], ângulo entre uma direção de referência e o nó ascendente
-- Tempo desde o perigeu [$\Delta t$], tempo decorrido desde que o satélite passou pelo perigeu.
+- Excentricidade da órbita [ $e$ ], que sempre vai ser um valor entre $0$ e $1$.
+- Semieixo maior [ $a$ ], metade da distância entre o apogeu e perigeu
+- Argumento do perigeu [ $\omega$ ], define a orientação da elipse no plano orbital
+- Inclinação [ $i$ ], ângulo entre o plano equatorial da terra e o plano orbital
+- Longitude do nó ascendente [ $\Omega$ ], ângulo entre uma direção de referência e o nó ascendente
+- Tempo desde o perigeu [ $\Delta t$ ], tempo decorrido desde que o satélite passou pelo perigeu.
 
 (*apogeu*: ponto de maior distância entre satélite e terra, *perigeu*: ponto de menor distância entre satélite e terra)
 
@@ -130,7 +130,7 @@ Além da natureza do sistema obtido, todas as medidas de GNSS apresentam erros e
     
 Por exemplo, ao usar uma função $J(\theta)$ de critério, dependente de uma possível solução $\theta$, que assume valores maiores para soluções piores e valores menores para as melhores, o problema consiste em encontrar o valor de $\theta$ que minimiza essa função (a melhor solução possível). A notação para esse tipo de problema é:
 
-$$\hat{\theta} = \argmin_\theta J(\theta)$$
+$$\hat{\theta} = \arg\min_\theta J(\theta)$$
 
 Um critério possível no problema da localização do drone é uma função $J(\mathbf{r})$ que depende de um "chute" inicial de posição, $\mathbf{r}$, e avalia a diferença entre a medida e o valor calculado usando o chute. Uma função $J$ possível seria
 
@@ -146,11 +146,11 @@ A partir da Figura, qual o valor de $J$ quando escolhemos a posição certa do r
 
 (A página da Wikipedia sobre otimização merece um tour: https://en.wikipedia.org/wiki/Mathematical_optimization)
 
-Nesse sentido, o conceito do **vetor gradiente** $\nabla f$, de uma função multivariável $f: \R^n \to \R$ em um ponto $\mathbf{x}\in \R^n$, é especialmente útil uma vez que ele indica a direção de máxima subida e máxima descida (*Problema 3 e Problema 4, Lista 3*). Portanto, o gradiente de uma função que se deseja maximizar/minimizar vai indicar o melhor caminho local.
+Nesse sentido, o conceito do **vetor gradiente** $\nabla f$, de uma função multivariável $f: \mathbb{R}^n \to \mathbb{R}$ em um ponto $\mathbf{x}\in \mathbb{R}^n$, é especialmente útil uma vez que ele indica a direção de máxima subida e máxima descida (*Problema 3 e Problema 4, Lista 3*). Portanto, o gradiente de uma função que se deseja maximizar/minimizar vai indicar o melhor caminho local.
 
 Usando essas ideias, descreva um método iterativo de otimização que use o gradiente e demonstre como ele pode ser aplicado para o problema de **trilateração**:
 
-$$\argmin_\mathbf{r} \frac{1}{2}\sum_{i=1}^{N}\left(\|\mathbf{r}_i - \mathbf{r}\|^2 - \rho_i^2\right)^2$$
+$$\arg\min_\mathbf{r} \frac{1}{2}\sum_{i=1}^{N}\left(\|\mathbf{r}_i - \mathbf{r}\|^2 - \rho_i^2\right)^2$$
 
 # Projeto
 
